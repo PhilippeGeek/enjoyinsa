@@ -26,7 +26,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '3.1.0'
+  gem 'rspec-rails', '3.5.0.beta4'
+  gem 'shoulda-matchers'
+  gem 'minitest-spec-rails'
+  gem 'minitest-reporters'
 end
 
 group :development do
