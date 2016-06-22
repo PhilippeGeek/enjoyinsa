@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event, only: [:show, :update, :destroy, :publish, :unpublish]
 
   # GET /events
   def index
@@ -11,6 +11,24 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     render json: @event
+  end
+
+  # POST /events/1/publish
+  def publish
+    if @event.update(published: true)
+      render json: @event
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
+  end
+
+  # POST /events/1/unpublish
+  def unpublish
+    if @event.update(published: false)
+      render json: @event
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
   end
 
   # POST /events
