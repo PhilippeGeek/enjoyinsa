@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: enjoyinsa_production
-  username: enjoyinsa
-  password: <%= ENV['ENJOYINSA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
