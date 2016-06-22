@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     if @event.update(published: true)
       render json: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors.details, status: :unprocessable_entity
     end
   end
 
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     if @event.update(published: false)
       render json: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors.details, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     if @event.save
       render json: @event, status: :created, location: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors.details, status: :unprocessable_entity
     end
   end
 
@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       render json: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors.details, status: :unprocessable_entity
     end
   end
 
